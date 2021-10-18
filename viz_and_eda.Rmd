@@ -360,7 +360,7 @@ weather_df %>%
 ```
 ```{r}
 pulse_data = 
-  haven::read_sas("../data_import_examples/public_pulse_data.sas7bdat") %>%
+  haven::read_sas("./data_import_examples/public_pulse_data.sas7bdat") %>%
   janitor::clean_names() %>%
   pivot_longer(
     bdi_score_bl:bdi_score_12m,
@@ -379,12 +379,12 @@ ggplot(pulse_data, aes(x = visit, y = bdi)) +
 
 ```{r}
 pup_data = 
-  read_csv("../data_import_examples/FAS_pups.csv", col_types = "ciiiii") %>%
+  read_csv("./data_import_examples/FAS_pups.csv", col_types = "ciiiii") %>%
   janitor::clean_names() %>%
   mutate(sex = recode(sex, `1` = "male", `2` = "female")) 
 
 litter_data = 
-  read_csv("../data_import_examples/FAS_litters.csv", col_types = "ccddiiii") %>%
+  read_csv("./data_import_examples/FAS_litters.csv", col_types = "ccddiiii") %>%
   janitor::clean_names() %>%
   separate(group, into = c("dose", "day_of_tx"), sep = 3)
 
